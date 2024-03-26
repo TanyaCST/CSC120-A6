@@ -1,12 +1,17 @@
 /* This is a stub for the Library class */
 
-import java.util.Hashtable;
+import java.util.*;
 
 public class Library extends Building {
   private Hashtable<String, Boolean> collection;
 
-
-    public Library(String name, String address, int nFloors) {
+  /**
+   * Constructor: Create a library
+   * @param name: the name of library
+   * @param address: library's address
+   * @param nFloors: number of floors this library has
+   */  
+  public Library(String name, String address, int nFloors) {
       super(name, address, nFloors);
       this.collection = new Hashtable<String, Boolean>();
       System.out.println("You have built a library: 📖");
@@ -14,7 +19,7 @@ public class Library extends Building {
   
     /**
      * To put a book into the library collection
-     * @param title
+     * @param title: title of the book put into the library
      */
     public void addTitle(String title){
       this.collection.put(title, true);
@@ -23,7 +28,7 @@ public class Library extends Building {
     /**
      * To remove a book from the library collection
      * @param title a string variable representing the title of book
-     * @return
+     * @return the title of the book removed
      */
     public String removeTitle(String title){
       if (collection.keySet().contains(title)){
@@ -100,13 +105,16 @@ public class Library extends Building {
      * Print outthe entire collection with check out status
      */
     public void printCollection(){
-      String itemInCollection;
-      for (int i = 0; i < this.collection.size(); i++){
-        
-        //itemInCollection += this.collection.get;
+      Set<String> titles = collection.keySet();
+      for (String key: titles){
+        System.out.println(key + " " + collection.get(key));
       }
-    } // prints out the entire collection in an easy-to-read way (including checkout status)
+    } 
 
+    /**
+     * Main methods
+     * @param args
+     */
     public static void main(String[] args) {
       Library mybibli = new Library("Fake Library", "123 Ghost Street", 100);
       mybibli.collection.put("A Story", true);
@@ -114,7 +122,12 @@ public class Library extends Building {
       mybibli.checkOut("A Story");
       mybibli.returnBook("A Story");
       System.out.println(mybibli.removeTitle("A Story"));
-      System.out.println(mybibli.collection);
+      mybibli.containsTitle("Emily's Secret Diary");
+      mybibli.isAvailable("Emily's Secret Diary");
+      mybibli.printCollection();
+      
+      
+      
     }
   
   }

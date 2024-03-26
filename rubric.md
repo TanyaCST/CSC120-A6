@@ -30,7 +30,7 @@ __YES___ 1 pt: The `Library` class implements the requested additional methods (
 
 ### Level 3: `Cafe.java` (3 pts)
 
-_____ 1 pt: The `Cafe` class includes the requested attributes
+__YES___ 1 pt: The `Cafe` class includes the requested attributes
 
 _____ 1 pt: The `Cafe` class keeps the inventory up to date, based on sales
 
