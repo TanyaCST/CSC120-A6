@@ -48,10 +48,15 @@ public class Library extends Building {
     
     public void checkOut(String title){
       if (this.collection.keySet().contains(title)){
-        this.collection.replace(title, false);
+        if(this.collection.get(title)){
+          this.collection.replace(title, false);
+        }
+        else{
+          throw new RuntimeException("Sorry. " + title + " is borrowed.");
+        }
       }
       else{
-        throw new NullPointerException();
+        throw new RuntimeException("Sorry. " + title + " is not added to the library.");
       }
     }
     
@@ -61,10 +66,15 @@ public class Library extends Building {
      */
     public void returnBook(String title){
       if (this.collection.keySet().contains(title)){
-        this.collection.replace(title, true);
+        if(this.collection.get(title) == false){
+          this.collection.replace(title, true);
+        }
+        else{
+          throw new RuntimeException("Sorry. " + title + " is already returned. Are you sure you borrowed it from our library?");
+        }
       }
       else{
-        throw new NullPointerException();
+        throw new RuntimeException("Sorry. " + title + " is not implemented to our library.");
       }
     }
 
@@ -74,12 +84,7 @@ public class Library extends Building {
      * @return
      */
     public boolean containsTitle(String title){
-      if (this.collection.keySet().contains(title)){
-        return true;
-      }
-      else{
-        return false;
-      }
+      return this.collection.keySet().contains(title);
     } 
 
     /**
@@ -88,17 +93,10 @@ public class Library extends Building {
      * @return
      */
     public boolean isAvailable(String title){
-      if (containsTitle(title) == true) {
-        if(this.collection.get(title) == true){
-          return true;
-        }
-        else{
-          return false;
-        }
-      }
-      else{
+      if (!containsTitle(title)) {
         throw new NullPointerException();
       }
+      return this.collection.get(title);
     }
 
      /**

@@ -63,13 +63,8 @@ public class House extends Building {
 
   }
 
-  public boolean IsResident(String name){
-    if (this.residents.contains(name)) {
-      return true;
-    }
-    else{
-      return false;
-    }
+  public boolean isResident(String name){
+    return this.residents.contains(name);
   }
 
   public String toString(){

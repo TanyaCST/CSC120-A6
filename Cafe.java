@@ -41,9 +41,9 @@ public class Cafe extends Building {
      * @param nCreams
      */
     public void sellCoffee(int size, int nSugarPackets, int nCreams){
-        if(((this.nCoffeeOunces - size) != 0) && 
-            ((this.nSugarPackets - nSugarPackets) != 0) && 
-            ((this.nCreams - nCreams) != 0) ){
+        if(((this.nCoffeeOunces - size) > 0) && 
+            ((this.nSugarPackets - nSugarPackets) > 0) && 
+            ((this.nCreams - nCreams) > 0) ){
             this.nCoffeeOunces -= size;
             this.nSugarPackets -= nSugarPackets;
             this.nCreams -= nCreams; 
@@ -51,7 +51,10 @@ public class Cafe extends Building {
         }
         else{
             restock(size, nSugarPackets, nCreams, 100);
-            System.out.println("Material restock done");
+            this.nCoffeeOunces -= size;
+            this.nSugarPackets -= nSugarPackets;
+            this.nCreams -= nCreams; 
+            this.nCups -= 1;
         }
     }
 
@@ -63,20 +66,20 @@ public class Cafe extends Building {
      * @param nCups: amount of cups available in cafe
      */
     private void restock(int nCoffeeOunces, int nSugarPackets, int nCreams, int nCups){
-        if(this.nCoffeeOunces == 0){
+        if(this.nCoffeeOunces < 10){
             this.nCoffeeOunces = nCoffeeOunces;
         }
 
-        if(this.nSugarPackets == 0){
+        if(this.nSugarPackets < 10){
             this.nSugarPackets = nSugarPackets;
         }
 
-        if(this.nCreams == 0){
+        if(this.nCreams < 10){
             this.nCreams = nCreams;
         }
 
 
-        if (this.nCups == 0) {
+        if (this.nCups < 10) {
             this.nCups = nCups;
         }
 
