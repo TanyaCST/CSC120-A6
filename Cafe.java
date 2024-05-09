@@ -85,6 +85,10 @@ public class Cafe extends Building {
 
     }
 
+    /**
+     * show staffs how much materials are remaining
+     * @return a string where contains material name and amount of materials remaining.
+     */
     public String materialCheck(){
         return "Coffee: " + nCoffeeOunces + " Sugar Packets: " + nSugarPackets + "Cream:";
     }

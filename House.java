@@ -7,6 +7,9 @@ public class House extends Building {
   private boolean hasDiningRoom;
   boolean elevator;
 
+  /**
+   * constructor
+   */
   public House(String name, String address, int nFloors, boolean hasDiningRoom, boolean elevator) {
     super(name, address, nFloors);
 
@@ -24,16 +27,16 @@ public class House extends Building {
   }
 
   /**
-   * 
-   * @return
+   * T/F whether the house has dining room
+   * @return boolean: whether the house has Dining rooms
    */
   public boolean hasDiningRoom(){
     return hasDiningRoom;
   }
   
   /**
-   * 
-   * @return
+   * tell how many residents are there in this house
+   * @return number of residents in this house
    */
   public int nResidents(){
     return residents.size();
@@ -63,10 +66,18 @@ public class House extends Building {
 
   }
 
+  /**
+   * T/F check whether this resident lives in this house
+   * @param name resident name
+   * @return T/F 
+   */
   public boolean isResident(String name){
     return this.residents.contains(name);
   }
 
+  /**
+   * an introduction to this house
+   */
   public String toString(){
     return this.name + " is a " + this.nFloors + "-story resident house located at " + this.address;
   }
